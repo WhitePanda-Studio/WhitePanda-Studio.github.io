@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WHITE PANDA STUDIO</title>
-    <!-- 引入 Google Fonts 和像素字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
@@ -16,7 +15,7 @@
             margin: 0;
             padding: 0;
             color: #333;
-            background-image: url('coverimage.png'); /* 使用你上传的背景图片 */
+            background-image: url('coverimage.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -27,30 +26,30 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.5); /* 减少透明度 */
-            backdrop-filter: blur(7.5px); /* 增加模糊效果50% */
-            z-index: -1; /* 背景效果 */
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(7.5px);
+            z-index: -1;
         }
         header {
             position: relative;
-            color: #e74c3c; /* 更明亮的颜色 */
-            font-family: 'PixelFont', sans-serif; /* 像素风格字体 */
+            color: #e74c3c;
+            font-family: 'PixelFont', sans-serif;
             padding: 80px 20px;
             text-align: center;
             z-index: 1;
         }
         header h1 {
-            font-size: 72px; /* 增大字号 */
+            font-size: 72px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 深色阴影增强对比 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             margin-bottom: 10px;
         }
         .studio-info {
             text-align: center;
             padding: 20px;
-            background-color: #f0f4f8; /* Apple风格背景色 */
-            border-radius: 25px; /* 统一圆角风格 */
+            background-color: #f0f4f8;
+            border-radius: 25px;
             margin: 20px auto;
             max-width: 800px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -58,12 +57,12 @@
         }
         .studio-info h2 {
             font-size: 28px;
-            color: #333; /* 深色字体 */
+            color: #333;
             margin-bottom: 10px;
         }
         .studio-info p {
             font-size: 18px;
-            color: #666; /* 灰色字体 */
+            color: #666;
             margin: 0;
         }
         .content {
@@ -85,60 +84,59 @@
             transition: transform 0.5s ease;
         }
         .card {
-            flex: 1 0 100%; /* 卡片全宽 */
-            background: #ffffff; /* Apple风格背景色 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Apple风格阴影 */
-            border-radius: 25px; /* 统一圆角风格 */
-            padding: 40px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; /* 使卡片内部内容呈现水平排列 */
+            align-items: center;
+            justify-content: flex-start; /* 使内容靠左对齐 */
+            background: #ffffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            padding: 20px;
             margin: 20px;
-            display: flex; /* 新增：用于居中内容 */
-            flex-direction: column; /* 新增：保持纵向排列 */
-            justify-content: center; /* 新增：垂直居中内容 */
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 80%; /* 限制卡片宽度 */
         }
         .card img {
-            width: 100px; /* 缩小图标尺寸 */
+            width: 100px;
             height: auto;
-            border-radius: 15px; /* 添加圆角 */
-            margin-bottom: 15px;
+            border-radius: 15px;
+            margin-right: 20px; /* 增加图标与文本的间距 */
         }
-        .card h2 {
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card-content h2 {
             font-size: 24px;
             font-weight: 600;
-            color: #e67e22; /* 橙色字体，与背景形成对比 */
-            margin-top: 10px;
+            color: #e67e22;
+            margin-top: 0;
         }
-        .card p {
+        .card-content p {
             line-height: 1.8;
             font-size: 16px;
-            color: #2c3e50; /* 深色字体 */
-        }
-        .card p.center-text {
-            font-size: 30px; /* 增大字号 */
-            color: #2c3e50; /* 深色字体 */
-            margin-bottom: 10px;
+            color: #2c3e50;
         }
         .download-info {
             font-family: 'PixelFont', 'Arial', sans-serif;
             font-size: 20px;
-            color: #c0392b; /* 深红色字体，像素风格 */
+            color: #c0392b;
             margin: 20px 0;
         }
         .download-button {
             display: inline-block;
-            background: linear-gradient(45deg, #007AFF, #005BBB); /* Apple风格按钮 */
+            background: linear-gradient(45deg, #007AFF, #005BBB);
             color: white;
             padding: 10px 20px;
-            margin-top: 10px;
             border-radius: 30px;
             text-decoration: none;
             font-size: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 10px;
         }
         .download-button:hover {
-            background: linear-gradient(45deg, #005BBB, #003E7E); /* 悬停时的渐变效果 */
+            background: linear-gradient(45deg, #005BBB, #003E7E);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         .carousel-control {
@@ -162,11 +160,11 @@
             right: 10px;
         }
         footer {
-            background-color: rgba(44, 62, 80, 0.8); /* 深蓝色背景，稍微透明 */
+            background-color: rgba(44, 62, 80, 0.8);
             color: #fff;
             padding: 20px;
             text-align: center;
-            border-top: 2px solid #e67e22; /* 与按钮颜色相协调 */
+            border-top: 2px solid #e67e22;
             margin-top: 40px;
             z-index: 1;
         }
@@ -181,7 +179,7 @@
     </style>
 </head>
 <body>
-    <div class="overlay"></div> <!-- 背景模糊效果 -->
+    <div class="overlay"></div>
     <header>
         <h1>WHITE PANDA STUDIO</h1>
     </header>
@@ -194,14 +192,18 @@
             <div class="carousel-inner">
                 <div class="card">
                     <img src="icon.png" alt="Flappy Plane Icon">
-                    <h2>Flappy Plane</h2>
-                    <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
-                    <p class="download-info">Get it now on Google Play!</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
+                    <div class="card-content">
+                        <h2>Flappy Plane</h2>
+                        <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
+                        <p class="download-info">Get it now on Google Play!</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
+                    </div>
                 </div>
                 <div class="card">
-                    <p class="center-text">More Games Coming Soon</p>
-                    <p>Stay tuned for our upcoming releases!</p>
+                    <div class="card-content">
+                        <p class="center-text">More Games Coming Soon</p>
+                        <p>Stay tuned for our upcoming releases!</p>
+                    </div>
                 </div>
             </div>
             <div class="carousel-control left" onclick="prevSlide()">&#10094;</div>
