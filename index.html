@@ -10,11 +10,17 @@
             font-family: 'PixelFont';
             src: url('https://fonts.cdnfonts.com/s/45864/PressStart2P-Regular.woff') format('woff');
         }
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #e67e22;
+            --text-color: #2c3e50;
+            --bg-color: #f0f4f8;
+        }
         body {
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: var(--text-color);
             background-image: url('coverimage.png');
             background-size: cover;
             background-position: center;
@@ -26,50 +32,65 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(7.5px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
             z-index: -1;
         }
         header {
             position: relative;
-            color: #e74c3c;
+            color: var(--primary-color);
             font-family: 'PixelFont', sans-serif;
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
             z-index: 1;
         }
         header h1 {
-            font-size: 72px;
+            font-size: 84px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 10px;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 35px var(--primary-color);
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--primary-color), 0 0 40px var(--primary-color), 0 0 55px var(--primary-color);
+            }
         }
         .studio-info {
             text-align: center;
-            padding: 20px;
-            background-color: #f0f4f8;
-            border-radius: 25px;
-            margin: 20px auto;
+            padding: 40px;
+            background-color: rgba(240, 244, 248, 0.9);
+            border-radius: 30px;
+            margin: 40px auto;
             max-width: 800px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .studio-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         .studio-info h2 {
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
         }
         .studio-info p {
-            font-size: 18px;
-            color: #666;
+            font-size: 20px;
+            color: var(--text-color);
+            line-height: 1.6;
             margin: 0;
         }
         .content {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             z-index: 1;
         }
         .carousel {
@@ -84,22 +105,30 @@
             transition: transform 0.5s ease;
         }
         .card {
-            display: flex; /* 使卡片内部内容呈现水平排列 */
+            display: flex;
             align-items: center;
-            justify-content: flex-start; /* 使内容靠左对齐 */
-            background: #ffffff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 25px;
-            padding: 20px;
+            justify-content: flex-start;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            padding: 40px;
             margin: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
-            width: 80%; /* 限制卡片宽度 */
+            width: 80%;
+        }
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         .card img {
-            width: 100px;
+            width: 120px;
             height: auto;
-            border-radius: 15px;
-            margin-right: 20px; /* 增加图标与文本的间距 */
+            border-radius: 20px;
+            margin-right: 40px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover img {
+            transform: rotate(5deg) scale(1.1);
         }
         .card-content {
             display: flex;
@@ -107,44 +136,49 @@
             justify-content: center;
         }
         .card-content h2 {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 600;
-            color: #e67e22;
+            color: var(--secondary-color);
             margin-top: 0;
+            margin-bottom: 15px;
         }
         .card-content p {
             line-height: 1.8;
-            font-size: 16px;
-            color: #2c3e50;
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 20px;
         }
         .download-info {
             font-family: 'PixelFont', 'Arial', sans-serif;
-            font-size: 20px;
-            color: #c0392b;
+            font-size: 22px;
+            color: var(--primary-color);
             margin: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         .download-button {
             display: inline-block;
             background: linear-gradient(45deg, #007AFF, #005BBB);
             color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 15px 30px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 20px;
         }
         .download-button:hover {
             background: linear-gradient(45deg, #005BBB, #003E7E);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
         }
         .carousel-control {
             position: absolute;
             top: 50%;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.5);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.6);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -152,29 +186,41 @@
             align-items: center;
             cursor: pointer;
             transform: translateY(-50%);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        .carousel-control:hover {
+            background: rgba(0, 0, 0, 0.8);
+            width: 70px;
+            height: 70px;
         }
         .carousel-control.left {
-            left: 10px;
+            left: 20px;
         }
         .carousel-control.right {
-            right: 10px;
+            right: 20px;
         }
         footer {
-            background-color: rgba(44, 62, 80, 0.8);
+            background-color: rgba(44, 62, 80, 0.9);
             color: #fff;
-            padding: 20px;
+            padding: 40px;
             text-align: center;
-            border-top: 2px solid #e67e22;
-            margin-top: 40px;
+            border-top: 4px solid var(--secondary-color);
+            margin-top: 60px;
             z-index: 1;
+        }
+        footer p {
+            font-size: 18px;
+            margin: 10px 0;
         }
         footer a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s ease;
         }
         footer a:hover {
-            text-decoration: underline;
+            color: var(--secondary-color);
         }
     </style>
 </head>
@@ -185,7 +231,7 @@
     </header>
     <div class="studio-info">
         <h2>About Us</h2>
-        <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide.</p>
+        <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide. Our passion for creativity and innovation drives us to craft unforgettable gaming experiences.</p>
     </div>
     <div class="content">
         <div class="carousel">
@@ -194,15 +240,15 @@
                     <img src="icon.png" alt="Flappy Plane Icon">
                     <div class="card-content">
                         <h2>Flappy Plane</h2>
-                        <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
-                        <p class="download-info">Get it now on Google Play!</p>
+                        <p>Embark on an exhilarating journey with Flappy Plane, our addictive side-scrolling arcade game. Control your plane through challenging obstacles, test your reflexes, and compete for the highest scores in this thrilling adventure!</p>
+                        <p class="download-info">Ready for takeoff? Get it now on Google Play!</p>
                         <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <p class="center-text">More Games Coming Soon</p>
-                        <p>Stay tuned for our upcoming releases!</p>
+                        <h2>Coming Soon</h2>
+                        <p>Exciting new games are on the horizon! Our team is hard at work crafting innovative experiences that will push the boundaries of indie gaming. Stay tuned for announcements and be the first to play our upcoming releases!</p>
                     </div>
                 </div>
             </div>
@@ -213,6 +259,7 @@
     <footer>
         <p>&copy; 2024 WHITE PANDA STUDIO. All rights reserved.</p>
         <p>Contact: <a href="mailto:milktea11603@gmail.com">milktea11603@gmail.com</a></p>
+        <p>Follow us on social media for the latest updates and behind-the-scenes content!</p>
     </footer>
     <script>
         let currentSlide = 0;
