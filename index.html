@@ -27,13 +27,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)); /* 半透明渐变 */
-            backdrop-filter: blur(20px); /* 模糊效果 */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)); /* 减少模糊和透明度 */
+            backdrop-filter: blur(10px); /* 减少模糊效果 */
             z-index: -1; /* 背景效果 */
         }
         header {
             position: relative;
-            color: #2c3e50; /* 深色以更好地与背景形成对比 */
+            color: #1f2f3f; /* 深色以更好地与背景形成对比 */
             padding: 80px 20px;
             text-align: center;
             z-index: 1;
@@ -42,14 +42,14 @@
             font-size: 56px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* 添加浅色阴影以增强对比 */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3); /* 添加浅色阴影以增强对比 */
             margin-bottom: 10px;
         }
         .studio-info {
             text-align: center;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
-            backdrop-filter: blur(10px);
+            background-color: rgba(245, 245, 245, 0.9); /* 更加明亮的半透明白色背景 */
+            backdrop-filter: blur(5px);
             margin: 20px 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -57,12 +57,12 @@
         }
         .studio-info h2 {
             font-size: 28px;
-            color: #2c3e50; /* 深色字体 */
+            color: #1f2f3f; /* 深色字体 */
             margin-bottom: 10px;
         }
         .studio-info p {
             font-size: 18px;
-            color: #34495e; /* 深灰色字体 */
+            color: #2f3e50; /* 深灰色字体 */
             margin: 0;
         }
         .content {
@@ -72,8 +72,8 @@
             z-index: 1;
         }
         .card {
-            background: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
-            backdrop-filter: blur(15px);
+            background: rgba(255, 250, 240, 0.85); /* 柔和的暖色背景，更加活泼 */
+            backdrop-filter: blur(5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
             padding: 20px;
@@ -95,23 +95,23 @@
         .card h2 {
             font-size: 24px;
             font-weight: 600;
-            color: #d35400; /* 橙色字体与背景形成对比 */
+            color: #e67e22; /* 橙色字体，与背景形成对比 */
             margin-top: 10px;
         }
         .card p {
             line-height: 1.8;
             font-size: 16px;
-            color: #555;
+            color: #2c3e50; /* 深色字体 */
         }
         .download-info {
             font-family: 'PixelFont';
             font-size: 20px;
-            color: #e74c3c; /* 红色字体，像素风格 */
+            color: #c0392b; /* 深红色字体，像素风格 */
             margin: 20px 0;
         }
         .download-button {
             display: inline-block;
-            background: linear-gradient(45deg, #e67e22, #d35400); /* 橙色渐变按钮 */
+            background: linear-gradient(45deg, #f39c12, #e74c3c); /* 橙红渐变按钮 */
             color: white;
             padding: 10px 20px;
             margin-top: 10px;
@@ -122,15 +122,15 @@
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .download-button:hover {
-            background: linear-gradient(45deg, #d35400, #e67e22); /* 悬停时的渐变效果 */
+            background: linear-gradient(45deg, #e74c3c, #f39c12); /* 悬停时的渐变效果 */
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         footer {
-            background-color: rgba(44, 62, 80, 0.9); /* 深蓝色背景，半透明 */
+            background-color: rgba(44, 62, 80, 0.8); /* 深蓝色背景，稍微透明 */
             color: #fff;
             padding: 20px;
             text-align: center;
-            border-top: 2px solid #d35400; /* 与按钮颜色相协调 */
+            border-top: 2px solid #e67e22; /* 与按钮颜色相协调 */
             margin-top: 40px;
             z-index: 1;
         }
