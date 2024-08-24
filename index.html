@@ -28,7 +28,7 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.5); /* 减少透明度 */
-            backdrop-filter: blur(2px); /* 减少模糊效果 */
+            backdrop-filter: blur(5px); /* 增加模糊效果 */
             z-index: -1; /* 背景效果 */
         }
         header {
@@ -93,6 +93,9 @@
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             margin: 20px;
+            display: flex; /* 新增：用于居中内容 */
+            flex-direction: column; /* 新增：保持纵向排列 */
+            justify-content: center; /* 新增：垂直居中内容 */
         }
         .card img {
             width: 100px; /* 缩小图标尺寸 */
@@ -110,6 +113,11 @@
             line-height: 1.8;
             font-size: 16px;
             color: #2c3e50; /* 深色字体 */
+        }
+        .card p.center-text {
+            font-size: 30px; /* 增大字号 */
+            color: #2c3e50; /* 深色字体 */
+            margin-bottom: 10px;
         }
         .download-info {
             font-family: 'PixelFont', 'Arial', sans-serif;
@@ -192,7 +200,7 @@
                     <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
                 </div>
                 <div class="card">
-                    <h2>More Games Coming Soon</h2>
+                    <p class="center-text">More Games Coming Soon</p>
                     <p>Stay tuned for our upcoming releases!</p>
                 </div>
             </div>
