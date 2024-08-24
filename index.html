@@ -40,7 +40,7 @@
             z-index: 1;
         }
         header h1 {
-            font-size: 60px;
+            font-size: 72px; /* 增大字号 */
             font-weight: 700;
             margin: 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 深色阴影增强对比 */
@@ -69,29 +69,31 @@
         .content {
             display: flex;
             justify-content: center;
+            align-items: center;
             padding: 40px 20px;
             z-index: 1;
         }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
         .card {
+            flex: 1 0 100%; /* 卡片全宽 */
             background: rgba(255, 240, 220, 0.85); /* 更亮的背景色 */
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
             padding: 20px;
-            max-width: 400px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            z-index: 1;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-        .card img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 15px;
+            margin: 0 10px; /* 卡片间距 */
         }
         .card h2 {
             font-size: 24px;
@@ -126,6 +128,26 @@
             background: linear-gradient(45deg, #e74c3c, #f39c12); /* 悬停时的渐变效果 */
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+        .carousel-control.left {
+            left: 0;
+        }
+        .carousel-control.right {
+            right: 0;
+        }
         footer {
             background-color: rgba(44, 62, 80, 0.8); /* 深蓝色背景，稍微透明 */
             color: #fff;
@@ -155,17 +177,47 @@
         <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide.</p>
     </div>
     <div class="content">
-        <div class="card">
-            <img src="icon.png" alt="Flappy Plane Icon">
-            <h2>Flappy Plane</h2>
-            <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
-            <p class="download-info">Get it now on Google Play!</p>
-            <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="card">
+                    <img src="icon.png" alt="Flappy Plane Icon">
+                    <h2>Flappy Plane</h2>
+                    <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
+                    <p class="download-info">Get it now on Google Play!</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
+                </div>
+                <div class="card">
+                    <h2>更多的游戏即将到来</h2>
+                    <p>Stay tuned for our upcoming releases!</p>
+                </div>
+            </div>
+            <div class="carousel-control left" onclick="prevSlide()">&#10094;</div>
+            <div class="carousel-control right" onclick="nextSlide()">&#10095;</div>
         </div>
     </div>
     <footer>
         <p>&copy; 2024 WHITE PANDA STUDIO. All rights reserved.</p>
         <p>Contact: <a href="mailto:milktea11603@gmail.com">milktea11603@gmail.com</a></p>
     </footer>
+    <script>
+        let currentSlide = 0;
+        function showSlide(index) {
+            const slides = document.querySelector('.carousel-inner').children;
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            document.querySelector('.carousel-inner').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
 </body>
 </html>
