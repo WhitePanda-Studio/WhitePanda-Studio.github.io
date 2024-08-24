@@ -27,8 +27,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4)); /* 减少透明度 */
-            backdrop-filter: blur(5px); /* 进一步减少模糊效果 */
+            background: rgba(255, 255, 255, 0.5); /* 减少透明度 */
+            backdrop-filter: blur(2px); /* 减少模糊效果 */
             z-index: -1; /* 背景效果 */
         }
         header {
@@ -49,21 +49,21 @@
         .studio-info {
             text-align: center;
             padding: 20px;
-            background-color: rgba(220, 240, 255, 0.9); /* 浅蓝色背景 */
-            backdrop-filter: blur(5px);
-            margin: 20px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f0f4f8; /* Apple风格背景色 */
+            border-radius: 25px; /* 统一圆角风格 */
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             z-index: 1;
         }
         .studio-info h2 {
             font-size: 28px;
-            color: #1f2f3f; /* 深蓝色字体 */
+            color: #333; /* 深色字体 */
             margin-bottom: 10px;
         }
         .studio-info p {
             font-size: 18px;
-            color: #2f3e50; /* 深灰色字体 */
+            color: #666; /* 灰色字体 */
             margin: 0;
         }
         .content {
@@ -86,16 +86,16 @@
         }
         .card {
             flex: 1 0 100%; /* 卡片全宽 */
-            background: #f5f5f7; /* Apple风格背景色 */
+            background: #ffffff; /* Apple风格背景色 */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Apple风格阴影 */
             border-radius: 25px; /* 统一圆角风格 */
-            padding: 20px;
+            padding: 40px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            margin: 0 10px; /* 卡片间距 */
+            margin: 20px;
         }
         .card img {
-            width: 120px; /* 缩小图标尺寸 */
+            width: 100px; /* 缩小图标尺寸 */
             height: auto;
             border-radius: 15px; /* 添加圆角 */
             margin-bottom: 15px;
@@ -148,10 +148,10 @@
             transform: translateY(-50%);
         }
         .carousel-control.left {
-            left: 0;
+            left: 10px;
         }
         .carousel-control.right {
-            right: 0;
+            right: 10px;
         }
         footer {
             background-color: rgba(44, 62, 80, 0.8); /* 深蓝色背景，稍微透明 */
