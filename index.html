@@ -86,14 +86,19 @@
         }
         .card {
             flex: 1 0 100%; /* 卡片全宽 */
-            background: rgba(255, 240, 220, 0.85); /* 更亮的背景色 */
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
+            background: #f5f5f7; /* Apple风格背景色 */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Apple风格阴影 */
+            border-radius: 25px; /* 统一圆角风格 */
             padding: 20px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             margin: 0 10px; /* 卡片间距 */
+        }
+        .card img {
+            width: 120px; /* 缩小图标尺寸 */
+            height: auto;
+            border-radius: 15px; /* 添加圆角 */
+            margin-bottom: 15px;
         }
         .card h2 {
             font-size: 24px;
@@ -114,7 +119,7 @@
         }
         .download-button {
             display: inline-block;
-            background: linear-gradient(45deg, #f39c12, #e74c3c); /* 橙红渐变按钮 */
+            background: linear-gradient(45deg, #007AFF, #005BBB); /* Apple风格按钮 */
             color: white;
             padding: 10px 20px;
             margin-top: 10px;
@@ -125,7 +130,7 @@
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .download-button:hover {
-            background: linear-gradient(45deg, #e74c3c, #f39c12); /* 悬停时的渐变效果 */
+            background: linear-gradient(45deg, #005BBB, #003E7E); /* 悬停时的渐变效果 */
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         .carousel-control {
@@ -187,7 +192,7 @@
                     <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
                 </div>
                 <div class="card">
-                    <h2>更多的游戏即将到来</h2>
+                    <h2>More Games Coming Soon</h2>
                     <p>Stay tuned for our upcoming releases!</p>
                 </div>
             </div>
