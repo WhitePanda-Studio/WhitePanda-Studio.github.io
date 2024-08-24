@@ -3,72 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flappy Plane</title>
+    <title>WHITE PANDA STUDIO</title>
+    <!-- 引入 Google Fonts 和像素字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'PixelFont';
+            src: url('https://fonts.cdnfonts.com/s/45864/PressStart2P-Regular.woff') format('woff');
+        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #e0f7fa 100%);
+            background-image: url('coverimage.png'); /* 使用你上传的背景图片 */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)); /* 半透明渐变 */
+            backdrop-filter: blur(20px); /* 模糊效果 */
+            z-index: -1; /* 背景效果 */
         }
         header {
-            background-image: url('startb.png');
-            background-size: cover;
-            color: white;
-            padding: 60px 20px;
-            border-bottom: 2px solid #005BBB;
+            position: relative;
+            color: #2c3e50; /* 深色以更好地与背景形成对比 */
+            padding: 80px 20px;
+            text-align: center;
+            z-index: 1;
         }
-        header img {
-            width: 80px;
-            height: auto;
+        header h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* 添加浅色阴影以增强对比 */
+            margin-bottom: 10px;
+        }
+        .studio-info {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            backdrop-filter: blur(10px);
+            margin: 20px 20px;
             border-radius: 15px;
-            margin-top: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
         }
-        main {
+        .studio-info h2 {
+            font-size: 28px;
+            color: #2c3e50; /* 深色字体 */
+            margin-bottom: 10px;
+        }
+        .studio-info p {
+            font-size: 18px;
+            color: #34495e; /* 深灰色字体 */
+            margin: 0;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
             padding: 40px 20px;
+            z-index: 1;
         }
-        h1, h2 {
+        .card {
+            background: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 1;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .card img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 15px;
+        }
+        .card h2 {
+            font-size: 24px;
             font-weight: 600;
+            color: #d35400; /* 橙色字体与背景形成对比 */
+            margin-top: 10px;
         }
-        p {
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.6;
+        .card p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
         }
-        a {
-            color: #007AFF;
+        .download-info {
+            font-family: 'PixelFont';
+            font-size: 20px;
+            color: #e74c3c; /* 红色字体，像素风格 */
+            margin: 20px 0;
+        }
+        .download-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e67e22, #d35400); /* 橙色渐变按钮 */
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 30px;
             text-decoration: none;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
-        a:hover {
-            text-decoration: underline;
+        .download-button:hover {
+            background: linear-gradient(45deg, #d35400, #e67e22); /* 悬停时的渐变效果 */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         footer {
-            background-color: #f1f1f1;
-            color: #666;
+            background-color: rgba(44, 62, 80, 0.9); /* 深蓝色背景，半透明 */
+            color: #fff;
             padding: 20px;
-            border-top: 1px solid #ddd;
+            text-align: center;
+            border-top: 2px solid #d35400; /* 与按钮颜色相协调 */
             margin-top: 40px;
+            z-index: 1;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <div class="overlay"></div> <!-- 背景模糊效果 -->
     <header>
-        <h1>Flappy Plane</h1>
+        <h1>WHITE PANDA STUDIO</h1>
     </header>
-    <main>
-        <img src="icon.png" alt="Flappy Plane Icon">
-        <h2>About the Game</h2>
-        <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
-        <h2>Download</h2>
-        <p>Get it now on <a href="https://play.google.com/store/apps/details?id=com.yourgame.fp" target="_blank">Google Play</a>!</p>
-    </main>
+    <div class="studio-info">
+        <h2>About Us</h2>
+        <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide.</p>
+    </div>
+    <div class="content">
+        <div class="card">
+            <img src="icon.png" alt="Flappy Plane Icon">
+            <h2>Flappy Plane</h2>
+            <p>Flappy Plane is an addictive side-scrolling arcade game where players control a plane to avoid obstacles and achieve high scores.</p>
+            <p class="download-info">Get it now on Google Play!</p>
+            <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
+        </div>
+    </div>
     <footer>
-        <p>Developer: WHITE PANDA SDI</p>
+        <p>&copy; 2024 WHITE PANDA STUDIO. All rights reserved.</p>
         <p>Contact: <a href="mailto:milktea11603@gmail.com">milktea11603@gmail.com</a></p>
     </footer>
 </body>
