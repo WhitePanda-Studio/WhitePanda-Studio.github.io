@@ -1,104 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WHITE PANDA STUDIO</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google fonts for smooth typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <style>
+        /*
+         * White Panda Studio enhanced website
+         *
+         * This stylesheet defines a dark, metallic‑inspired theme with a
+         * cinematic hero section. Colours have been tuned to evoke
+         * sophistication similar to a premium automotive site while still
+         * incorporating the bold energy of a game studio like Rockstar.
+         */
+
         @font-face {
             font-family: 'PixelFont';
             src: url('https://fonts.cdnfonts.com/s/45864/PressStart2P-Regular.woff') format('woff');
         }
+
         :root {
-            --primary-color: #e74c3c;
-            --secondary-color: #e67e22;
-            --text-color: #2c3e50;
-            --bg-color: #f0f4f8;
+            /* Metallic palette: gold and silver on a dark base */
+            --primary-color: #f39c12; /* metallic gold accent */
+            --secondary-color: #95a5a6; /* soft silver accent */
+            --text-color: #ecf0f1; /* light text for dark backgrounds */
+            --bg-color: #0a0f18; /* rich dark background */
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
+            margin: 0;
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+        }
+        .navbar .logo {
+            font-family: 'PixelFont', sans-serif;
+            font-size: 26px;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+        .navbar ul {
+            list-style: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+        .navbar ul li a {
             color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .navbar ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            /* Hero section uses the repository-provided cover image. Replace coverimage.png with your own hero graphic when needed */
             background-image: url('coverimage.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            overflow: hidden;
         }
-        .overlay {
-            position: fixed;
+        /* Dark overlay for readability */
+        .hero::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            z-index: -1;
+            /* Lighten the overlay so the background artwork is visible */
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
         }
-        header {
+        .hero-content {
             position: relative;
-            color: var(--primary-color);
-            font-family: 'PixelFont', sans-serif;
-            padding: 100px 20px;
-            text-align: center;
-            z-index: 1;
-        }
-        header h1 {
-            font-size: 84px;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary-color), 0 0 20px var(--primary-color), 0 0 35px var(--primary-color);
-            }
-            to {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--primary-color), 0 0 40px var(--primary-color), 0 0 55px var(--primary-color);
-            }
-        }
-        .studio-info {
-            text-align: center;
-            padding: 40px;
-            background-color: rgba(240, 244, 248, 0.9);
-            border-radius: 30px;
-            margin: 40px auto;
+            z-index: 2;
             max-width: 800px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            margin: 0 auto;
+            padding: calc(50vh - 200px) 20px 0;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-family: 'PixelFont', sans-serif;
+            font-size: 72px;
+            margin: 0;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        .hero-content p {
+            font-size: 24px;
+            margin-top: 20px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+        .cta-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn.primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .btn.secondary {
+            background: transparent;
+            color: var(--primary-color);
+        }
+        .btn.primary:hover {
+            background: #d35400;
+        }
+        .btn.secondary:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Studio info section */
+        .studio-info {
+            max-width: 900px;
+            margin: -80px auto 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .studio-info:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
         .studio-info h2 {
             font-size: 36px;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
         .studio-info p {
             font-size: 20px;
-            color: var(--text-color);
-            line-height: 1.6;
             margin: 0;
         }
+
+        /* Content carousel */
         .content {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 60px 20px;
-            z-index: 1;
         }
         .carousel {
-            display: flex;
+            position: relative;
             overflow: hidden;
             width: 100%;
             max-width: 1200px;
-            position: relative;
         }
         .carousel-inner {
             display: flex;
@@ -108,24 +200,23 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            background: rgba(255, 224, 179, 0.7); /* Extracted from Flappy Plane icon */
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 30px;
+            background: rgba(44, 62, 80, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             padding: 40px;
             margin: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
             flex-shrink: 0;
         }
         .card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
         .card img {
             width: 120px;
             height: auto;
-            border-radius: 20px;
+            border-radius: 15px;
             margin-right: 40px;
             transition: transform 0.3s ease;
         }
@@ -140,22 +231,18 @@
         .card-content h2 {
             font-size: 32px;
             font-weight: 600;
-            color: var(--secondary-color);
-            margin-top: 0;
-            margin-bottom: 15px;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
         }
         .card-content p {
-            line-height: 1.8;
             font-size: 18px;
-            color: var(--text-color);
-            margin-bottom: 20px;
+            margin: 0 0 15px 0;
         }
         .download-info {
             font-family: 'PixelFont', 'Arial', sans-serif;
-            font-size: 22px;
-            color: var(--primary-color);
-            margin: 20px 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            color: var(--secondary-color);
+            margin: 10px 0;
         }
         .download-button {
             display: flex;
@@ -164,93 +251,119 @@
             background: linear-gradient(45deg, #007AFF, #005BBB);
             color: white;
             padding: 15px 30px;
-            border-radius: 50px;
+            border-radius: 40px;
             text-decoration: none;
             font-size: 18px;
             font-weight: 600;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            margin-top: 20px;
             width: fit-content;
         }
         .download-button:hover {
             background: linear-gradient(45deg, #005BBB, #003E7E);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
             transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
         }
+
+        /* Carousel controls */
         .carousel-control {
             position: absolute;
             top: 50%;
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-color);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transform: translateY(-50%);
-            font-size: 24px;
+            font-size: 20px;
             transition: all 0.3s ease;
         }
         .carousel-control:hover {
-            background: rgba(0, 0, 0, 0.5);
-            width: 70px;
-            height: 70px;
+            background: rgba(0, 0, 0, 0.7);
+            width: 60px;
+            height: 60px;
         }
         .carousel-control.left {
-            left: 20px;
+            left: 15px;
         }
         .carousel-control.right {
-            right: 20px;
+            right: 15px;
         }
+
+        /* Footer */
         footer {
-            background-color: rgba(44, 62, 80, 0.9);
-            color: #fff;
+            background-color: rgba(10, 15, 24, 0.9);
+            color: var(--text-color);
             padding: 40px;
             text-align: center;
-            border-top: 4px solid var(--secondary-color);
-            margin-top: 60px;
-            z-index: 1;
+            border-top: 2px solid var(--primary-color);
+            margin-top: 80px;
         }
         footer p {
-            font-size: 18px;
-            margin: 10px 0;
+            font-size: 16px;
+            margin: 8px 0;
         }
         footer a {
-            color: #ffffff;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
         footer a:hover {
-            color: var(--secondary-color);
+            color: #f1c40f;
         }
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <header>
-        <h1>WHITE PANDA STUDIO</h1>
-    </header>
-    <div class="studio-info">
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="logo">White Panda</div>
+        <ul>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#games">作品</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero section with cinematic background -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>WHITE PANDA STUDIO</h1>
+            <p>Crafting immersive indie games with heart and soul</p>
+            <div class="cta-buttons">
+                <a href="#games" class="btn primary">查看作品</a>
+                <a href="#about" class="btn secondary">了解我们</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio information -->
+    <section id="about" class="studio-info">
         <h2>About Us</h2>
         <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide. Our passion for creativity and innovation drives us to craft unforgettable gaming experiences.</p>
-    </div>
-    <div class="content">
+    </section>
+
+    <!-- Carousel showcasing games -->
+    <section id="games" class="content">
         <div class="carousel">
             <div class="carousel-inner">
+                <!-- Card for Flappy Plane -->
                 <div class="card">
-                    <img src="icon.png" alt="Flappy Plane Icon">
+                    <img src="icon.png" alt="Flappy Plane Icon" />
                     <div class="card-content">
                         <h2>Flappy Plane</h2>
-                        <p>Embark on an exhilarating journey with Flappy Plane, our addictive side-scrolling arcade game. Control your plane through challenging obstacles, test your reflexes, and compete for the highest scores in this thrilling adventure!</p>
+                        <p>Embark on an exhilarating journey with Flappy Plane, our addictive side‑scrolling arcade game. Control your plane through challenging obstacles, test your reflexes, and compete for the highest scores in this thrilling adventure!</p>
                         <p class="download-info">Ready for takeoff? Get it now on Google Play!</p>
                         <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
                     </div>
                 </div>
+                <!-- Card for upcoming game with placeholder image -->
                 <div class="card">
+                    <img src="16298b43-362b-4eba-9743-eb08f424f661.png" alt="Coming Soon Placeholder" />
                     <div class="card-content">
                         <h2>Coming Soon</h2>
                         <p>Exciting new games are on the horizon! Our team is hard at work crafting innovative experiences that will push the boundaries of indie gaming. Stay tuned for announcements and be the first to play our upcoming releases!</p>
@@ -260,13 +373,16 @@
             <div class="carousel-control left" onclick="prevSlide()">&#10094;</div>
             <div class="carousel-control right" onclick="nextSlide()">&#10095;</div>
         </div>
-    </div>
-    <footer>
+    </section>
+
+    <footer id="contact">
         <p>&copy; 2024 WHITE PANDA STUDIO. All rights reserved.</p>
         <p>Contact: <a href="mailto:milktea11603@gmail.com">milktea11603@gmail.com</a></p>
-        <p>Follow us on social media for the latest updates and behind-the-scenes content!</p>
+        <p>Follow us on social media for the latest updates and behind‑the‑scenes content!</p>
     </footer>
+
     <script>
+        // Simple carousel functionality for sliding cards
         let currentSlide = 0;
         const totalSlides = document.querySelectorAll('.card').length;
 
