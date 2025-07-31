@@ -44,6 +44,20 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            position: relative; /* for layering the global overlay */
+        }
+
+        /* Global dark overlay: covers the whole page to unify the mood */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+            pointer-events: none;
         }
 
         /* Navigation bar */
@@ -89,17 +103,10 @@
             background: transparent;
             overflow: hidden;
         }
-        /* Dark overlay for readability */
+        /* The hero section no longer needs its own overlay, since the page-wide
+           overlay on the body provides a consistent darkening effect.  */
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Lighten the overlay so the background artwork is visible */
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            display: none;
         }
         .hero-content {
             position: relative;
@@ -158,7 +165,8 @@
         /* Studio info section */
         .studio-info {
             max-width: 900px;
-            margin: -80px auto 60px;
+            /* When placed below other sections, a standard positive margin keeps proper spacing. */
+            margin: 40px auto 60px;
             padding: 40px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -343,12 +351,6 @@
         </div>
     </section>
 
-    <!-- Studio information -->
-    <section id="about" class="studio-info">
-        <h2>About Us</h2>
-        <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide. Our passion for creativity and innovation drives us to craft unforgettable gaming experiences.</p>
-    </section>
-
     <!-- Carousel showcasing games -->
     <section id="games" class="content">
         <div class="carousel">
@@ -375,6 +377,12 @@
             <div class="carousel-control left" onclick="prevSlide()">&#10094;</div>
             <div class="carousel-control right" onclick="nextSlide()">&#10095;</div>
         </div>
+    </section>
+
+    <!-- Studio information: moved below games to reduce visual interruption. -->
+    <section id="about" class="studio-info">
+        <h2>About Us</h2>
+        <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide. Our passion for creativity and innovation drives us to craft unforgettable gaming experiences.</p>
     </section>
 
     <footer id="contact">
