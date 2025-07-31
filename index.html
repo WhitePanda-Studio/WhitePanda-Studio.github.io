@@ -36,6 +36,11 @@
         body {
             margin: 0;
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Apply the page-wide background image. It remains fixed during scrolling */
+            background-image: url('coverimage.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
@@ -80,11 +85,8 @@
         .hero {
             position: relative;
             height: 100vh;
-            /* Hero section uses the repository-provided cover image. Replace coverimage.png with your own hero graphic when needed */
-            background-image: url('coverimage.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            /* The hero section no longer carries its own image; the page background handles imagery */
+            background: transparent;
             overflow: hidden;
         }
         /* Dark overlay for readability */
