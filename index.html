@@ -95,6 +95,31 @@
             color: var(--primary-color);
         }
 
+        /* Language switcher buttons */
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+        }
+        .language-switcher button {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            font-size: 14px;
+        }
+        .language-switcher button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .language-switcher button.active {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
         /* Hero section */
         .hero {
             position: relative;
@@ -120,8 +145,12 @@
             font-family: 'PixelFont', sans-serif;
             font-size: 72px;
             margin: 0;
-            color: var(--primary-color);
+            /* Apply a subtle gradient to the hero title for a polished effect */
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
         }
         .hero-content p {
             font-size: 24px;
@@ -329,24 +358,28 @@
     </style>
 </head>
 <body>
-    <!-- Navigation bar -->
+    <!-- Navigation bar with language switcher -->
     <nav class="navbar">
-        <div class="logo">White Panda</div>
+        <div class="logo" data-i18n="logo"></div>
         <ul>
-            <li><a href="#about">关于我们</a></li>
-            <li><a href="#games">作品</a></li>
-            <li><a href="#contact">联系</a></li>
+            <li><a href="#about" data-i18n="navAbout"></a></li>
+            <li><a href="#games" data-i18n="navGames"></a></li>
+            <li><a href="#contact" data-i18n="navContact"></a></li>
         </ul>
+        <div class="language-switcher">
+            <button id="btn-zh" onclick="setLanguage('zh')">中文</button>
+            <button id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
     </nav>
 
     <!-- Hero section with cinematic background -->
     <section class="hero">
         <div class="hero-content">
-            <h1>WHITE PANDA STUDIO</h1>
-            <p>Crafting immersive indie games with heart and soul</p>
+            <h1 data-i18n="heroTitle"></h1>
+            <p data-i18n="heroSubtitle"></p>
             <div class="cta-buttons">
-                <a href="#games" class="btn primary">查看作品</a>
-                <a href="#about" class="btn secondary">了解我们</a>
+                <a href="#games" class="btn primary" data-i18n="heroBtnGames"></a>
+                <a href="#about" class="btn secondary" data-i18n="heroBtnAbout"></a>
             </div>
         </div>
     </section>
@@ -359,18 +392,18 @@
                 <div class="card">
                     <img src="icon.png" alt="Flappy Plane Icon" />
                     <div class="card-content">
-                        <h2>Flappy Plane</h2>
-                        <p>Embark on an exhilarating journey with Flappy Plane, our addictive side‑scrolling arcade game. Control your plane through challenging obstacles, test your reflexes, and compete for the highest scores in this thrilling adventure!</p>
-                        <p class="download-info">Ready for takeoff? Get it now on Google Play!</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button">Download Now</a>
+                        <h2 data-i18n="flappyTitle"></h2>
+                        <p data-i18n="flappyDesc"></p>
+                        <p class="download-info" data-i18n="flappyInfo"></p>
+                        <a href="https://play.google.com/store/apps/details?id=com.whitepandastudio.flappyplanefv" target="_blank" class="download-button" data-i18n="downloadNow"></a>
                     </div>
                 </div>
                 <!-- Card for upcoming game with placeholder image -->
                 <div class="card">
                     <img src="16298b43-362b-4eba-9743-eb08f424f661.png" alt="Coming Soon Placeholder" />
                     <div class="card-content">
-                        <h2>Coming Soon</h2>
-                        <p>Exciting new games are on the horizon! Our team is hard at work crafting innovative experiences that will push the boundaries of indie gaming. Stay tuned for announcements and be the first to play our upcoming releases!</p>
+                        <h2 data-i18n="comingTitle"></h2>
+                        <p data-i18n="comingDesc"></p>
                     </div>
                 </div>
             </div>
@@ -381,22 +414,21 @@
 
     <!-- Studio information: moved below games to reduce visual interruption. -->
     <section id="about" class="studio-info">
-        <h2>About Us</h2>
-        <p>We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide. Our passion for creativity and innovation drives us to craft unforgettable gaming experiences.</p>
+        <h2 data-i18n="aboutTitle"></h2>
+        <p data-i18n="aboutText"></p>
     </section>
 
     <footer id="contact">
-        <p>&copy; 2024 WHITE PANDA STUDIO. All rights reserved.</p>
-        <p>Contact: <a href="mailto:milktea11603@gmail.com">milktea11603@gmail.com</a></p>
-        <p>Follow us on social media for the latest updates and behind‑the‑scenes content!</p>
+        <p data-i18n="footerCopy"></p>
+        <p><span data-i18n="footerContact"></span> <a href="mailto:milktea11603@gmail.com">milktea11603@gmail.com</a></p>
+        <p data-i18n="footerFollow"></p>
     </footer>
 
     <script>
         // Simple carousel functionality for sliding cards
         let currentSlide = 0;
-        const totalSlides = document.querySelectorAll('.card').length;
-
         function showSlide(index) {
+            const totalSlides = document.querySelectorAll('.card').length;
             if (index >= totalSlides) {
                 currentSlide = 0;
             } else if (index < 0) {
@@ -406,14 +438,78 @@
             }
             document.querySelector('.carousel-inner').style.transform = `translateX(-${currentSlide * 100}%)`;
         }
-
         function nextSlide() {
             showSlide(currentSlide + 1);
         }
-
         function prevSlide() {
             showSlide(currentSlide - 1);
         }
+
+        // Translation dictionary for Chinese (zh) and English (en)
+        const translations = {
+            zh: {
+                logo: '白熊猫',
+                navAbout: '关于我们',
+                navGames: '作品',
+                navContact: '联系',
+                heroTitle: '白熊猫工作室',
+                heroSubtitle: '用心灵和灵魂打造沉浸式独立游戏',
+                heroBtnGames: '查看作品',
+                heroBtnAbout: '了解我们',
+                aboutTitle: '关于我们',
+                aboutText: '我们是一家独立游戏开发工作室，致力于为全球玩家带来更多独特而令人兴奋的独立游戏。我们对创意和创新的热爱驱使我们打造难忘的游戏体验。',
+                flappyTitle: 'Flappy Plane',
+                flappyDesc: '加入我们令人兴奋的 Flappy Plane 旅程，这是一款令人上瘾的横向卷轴街机游戏。操控你的飞机穿越重重障碍，考验你的反应能力，在这场刺激的冒险中争夺最高分！',
+                flappyInfo: '准备起飞了吗？立即在 Google Play 下载！',
+                downloadNow: '立即下载',
+                comingTitle: '敬请期待',
+                comingDesc: '令人兴奋的新游戏即将来临！我们的团队正在努力打造创新体验，突破独立游戏的边界。敬请关注我们的公告，抢先体验即将发布的新作！',
+                footerCopy: '© 2024 白熊猫工作室。保留所有权利。',
+                footerContact: '联系：',
+                footerFollow: '关注我们的社交媒体，获取最新动态和幕后内容！'
+            },
+            en: {
+                logo: 'White Panda',
+                navAbout: 'About Us',
+                navGames: 'Games',
+                navContact: 'Contact',
+                heroTitle: 'WHITE PANDA STUDIO',
+                heroSubtitle: 'Crafting immersive indie games with heart and soul',
+                heroBtnGames: 'View Games',
+                heroBtnAbout: 'About Us',
+                aboutTitle: 'About Us',
+                aboutText: 'We are an independent game development studio committed to bringing more unique and exciting indie games to players worldwide. Our passion for creativity and innovation drives us to craft unforgettable gaming experiences.',
+                flappyTitle: 'Flappy Plane',
+                flappyDesc: 'Embark on an exhilarating journey with Flappy Plane, our addictive side‑scrolling arcade game. Control your plane through challenging obstacles, test your reflexes, and compete for the highest scores in this thrilling adventure!',
+                flappyInfo: 'Ready for takeoff? Get it now on Google Play!',
+                downloadNow: 'Download Now',
+                comingTitle: 'Coming Soon',
+                comingDesc: 'Exciting new games are on the horizon! Our team is hard at work crafting innovative experiences that will push the boundaries of indie gaming. Stay tuned for announcements and be the first to play our upcoming releases!',
+                footerCopy: '© 2024 WHITE PANDA STUDIO. All rights reserved.',
+                footerContact: 'Contact:',
+                footerFollow: 'Follow us on social media for the latest updates and behind‑the‑scenes content!'
+            }
+        };
+
+        // Function to apply translations based on selected language
+        function setLanguage(lang) {
+            const dict = translations[lang] || translations.zh;
+            // iterate all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+            // update active state on language buttons
+            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+
+        // Set default language to Chinese on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('zh');
+        });
     </script>
 </body>
 </html>
